@@ -1,0 +1,12 @@
+{
+  "name": "dealmentor-ai",
+  "version": "1.0.0",
+  "description": "An AI-powered sales and business coaching intelligence platform.",
+  "dependencies": {
+    "@google/genai": "^1.26.0",
+    "jszip": "^3.10.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "recharts": "^3.3.0"
+  }
+}

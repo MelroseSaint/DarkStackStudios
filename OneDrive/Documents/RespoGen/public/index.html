@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RespoGen — Repo Generator</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+        <h1>🚀 RespoGen</h1>
+        <p>Generate GitHub-ready repositories with professional structure and documentation</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+        <div class="grid">
+            <div class="section">
+                <h2>📋 Repository Settings</h2>
+                <div class="form-group">
+                    <label for="repoName">Repository Name:</label>
+                    <input type="text" id="repoName" placeholder="my-awesome-project" value="my-project">
+                    <small>This will be used for the project name and folder structure</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="description">Project Description (Optional):</label>
+                    <input type="text" id="description" placeholder="A brief description of your project">
+                    <small>Will be included in README.md and package.json</small>
+                </div>
+                
+                <div class="form-group">
+                    <label for="template">GitHub-Ready Template:</label>
+                    <select id="template">
+                        <option value="react-app">🔵 React Application - Modern React app with best practices</option>
+                        <option value="node-api">🟢 Node.js API - RESTful API with Express and MongoDB</option>
+                        <option value="fullstack">🟣 Full-Stack App - React frontend + Node.js backend</option>
+                    </select>
+                    <small>Each template includes proper folder structure, documentation, and configuration files</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            <div class="section">
+                <h2>📁 Upload Files</h2>
+                <p>Upload individual code files that will be organized by language</p>
+                <input type="file" id="fileInput" multiple />
+                <div id="fileList"></div>
+                <small>Supported: .js, .py, .java, .cpp, .html, .css, .md, and more</small>
+            </div>
+
+            <div class="section">
+                <h2>📦 Upload ZIP Archive</h2>
+                <p>Upload an existing project as a ZIP file to include in your repository</p>
+                <input type="file" id="zipInput" accept=".zip" />
+                <div id="zipStatus"></div>
+                <small>ZIP contents will be extracted and organized</small>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>✏️ Add Code Snippets</h2>
+            <p>Add code snippets directly in the browser</p>
+            <div id="snippetContainer">
+                <div class="snippet-item">
+                    <input type="text" placeholder="Filename (e.g., main.js)" class="snippet-filename" />
+                    <textarea placeholder="Paste your code here..." class="snippet-content"></textarea>
+                    <button type="button" onclick="removeSnippet(this)">Remove</button>
+                </div>
+            </div>
+            <button type="button" onclick="addSnippet()">Add Another Snippet</button>
+        </div>
+
+        <div class="section generate-section">
+            <h2>🚀 Generate Repository</h2>
+            <p>Create a professional, GitHub-ready repository with:</p>
+            <ul>
+                <li>📖 Comprehensive README.md with setup instructions</li>
+                <li>📦 Proper package.json with scripts and dependencies</li>
+                <li>🚫 .gitignore file for your project type</li>
+                <li>⚙️ .env.example for environment variables</li>
+                <li>📄 MIT License file</li>
+                <li>🔧 .editorconfig for consistent formatting</li>
+                <li>📂 Organized folder structure following best practices</li>
+            </ul>
+            <button id="generateBtn" onclick="generateZip()">Generate GitHub-Ready Repository</button>
+            <div id="status"></div>
+        </div>
+    </div>
+</main>
+
+  <footer>
+    <small>Generated structure: src/<lang>, tests/, README.md, .editorconfig</small>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
