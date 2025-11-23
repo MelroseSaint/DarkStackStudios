@@ -79,9 +79,7 @@ const AnimatedBackground = () => {
         return () => {
             // Cleanup
             container.innerHTML = '';
-            if (document.head.contains(styleSheet)) {
-                document.head.removeChild(styleSheet);
-            }
+            document.head.removeChild(styleSheet);
         };
     }, []);
 
@@ -261,6 +259,8 @@ const Navbar = () => {
  * COMPONENT: HERO SECTION
  */
 const Hero = () => {
+    // Removed typing state and effect to make the FOUNDER tag static as requested
+
     return (
         <section className="relative min-h-screen flex items-center pt-32 lg:pt-20 overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
@@ -310,8 +310,9 @@ const Hero = () => {
                             {/* Image Wrapper */}
                             <div className="w-full h-full overflow-hidden bg-[#151515] border border-white/10 rounded-lg">
                                 <img
-                                    src="/hero-image.jpg"
+                                    src="image.png"
                                     alt="Founder of DarkStackStudios"
+                                    // Using object-cover for the portrait image
                                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
                                     onError={(e) => {
                                         e.target.onerror = null;
@@ -498,7 +499,7 @@ const Projects = () => {
                                 {/* Animated Code Preview (Placeholder) */}
                                 <div className="h-4 bg-gray-900 border-b border-white/10 overflow-hidden">
                                     <div className="flex space-x-4 animate-scroll-code">
-                                        <span className="text-xs font-mono text-gray-700">import {'{' + project.tags.join(', ') + '}'} from '{project.name}.js';</span>
+                                        <span className="text-xs font-mono text-gray-700">import {project.tags.join(', ')} from '{project.name}.js';</span>
                                     </div>
                                 </div>
 
@@ -549,7 +550,7 @@ const Contact = () => {
                 <AnimatedElement delay={100} className="text-center mb-12">
                     <SectionHeader title="Let's Connect / Transmit Data" id="contact" />
                     <p className="text-gray-400 text-lg">
-                        Let's build something that matters. DarkStackStudios is always open to collaboration.
+                        Let’s build something that matters. DarkStackStudios is always open to collaboration.
                     </p>
                 </AnimatedElement>
 
@@ -695,14 +696,6 @@ const App = () => {
         @keyframes scroll-code {
           0% { transform: translateX(100%); }
           100% { transform: translateX(-100%); }
-        }
-        
-        .animate-spin-slow {
-          animation: spin-slow 20s linear infinite;
-        }
-        @keyframes spin-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
         }
         
         .perspective-1000 {
